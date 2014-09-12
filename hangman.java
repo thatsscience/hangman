@@ -32,7 +32,7 @@ public class Hangman {
 
       System.out.println("Welcome to Hangman!");
       System.out.println("Total Number of Lives: " + numberOfLives);
-      //I have changed this to a "for" loop  
+        
       for(Scanner input = new Scanner(System.in); 
          !secretWord.matches("[" + guesses + "]+") & (misses += secretWord.contains(guesses.substring(0, 1)) ? 0 : 1) <= numberOfLives;
          guesses = input.nextLine().toUpperCase().charAt(0) + guesses){
