@@ -32,15 +32,13 @@ public class Hangman {
 
       System.out.println("Welcome to Hangman!");
       System.out.println("Total Number of Lives: " + numberOfLives);
-         
-      Scanner input = new Scanner(System.in);
-      do{
-         System.out.println("Your choices:" + guesses);
-         System.out.println(secretWord.replaceAll("(?<=.)", " ").replaceAll("[^" + guesses + "]", "-") + ("(Lives Left: " + (numberOfLives - misses) + ")"));
-                  guesses = input.nextLine().toUpperCase().charAt(0) + guesses;
-      }
-      while(!secretWord.matches("[" + guesses + "]+") & (misses += secretWord.contains(guesses.substring(0, 1)) ? 0 : 1) <= numberOfLives);
-      
+        
+      for(Scanner input = new Scanner(System.in); 
+         !secretWord.matches("[" + guesses + "]+") & (misses += secretWord.contains(guesses.substring(0, 1)) ? 0 : 1) <= numberOfLives;
+         guesses = input.nextLine().toUpperCase().charAt(0) + guesses){
+            System.out.println(secretWord.replaceAll("(?<=.)", " ").replaceAll("[^" + guesses + "]", "-") + ("(Lives Left: " + (numberOfLives - misses) + ")"));
+         }
+
         if(secretWord.matches("[" + guesses + "]+")){
             System.out.println();
    			System.out.println("GREAT JOB! The word was " + secretWord);
